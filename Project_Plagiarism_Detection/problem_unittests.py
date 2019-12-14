@@ -80,7 +80,7 @@ def test_containment(complete_df, containment_fn):
     
 def test_lcs(df, lcs_word):
     
-    test_index = 10 # file 10
+    test_index = 5 # file 10
     
     # get answer file text
     answer_text = df.loc[test_index, 'Text'] 
@@ -102,11 +102,12 @@ def test_lcs(df, lcs_word):
     
     # known vals for first few files
     lcs_vals = [0.1917808219178082, 0.8207547169811321, 0.8464912280701754, 0.3160621761658031, 0.24257425742574257]
-    
+        
     # results for comparison
     results = []
     
     for i in range(5):
+        
         # get answer and source text
         answer_text = df.loc[i, 'Text'] 
         task = df.loc[i, 'Task']
@@ -116,6 +117,11 @@ def test_lcs(df, lcs_word):
         source_text = orig_row['Text'].values[0]
         # calc lcs
         val = lcs_word(answer_text, source_text)
+        
+        print(lcs_vals[i])
+        print(val)
+        print("-----------")
+        
         results.append(val)
         
     # check correct results
